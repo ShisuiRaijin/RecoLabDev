@@ -2,7 +2,8 @@
 
 class Producto:
 
-    def __init__ (self,nombre_producto,descripcion_producto,imagen_producto,precio_producto,id_producto=0,id_tienda=0):
+    def __init__ (self, nombre_producto, descripcion_producto,
+                  imagen_producto, precio_producto,id_tienda, id_producto=0):
 
         self.nombre_producto = nombre_producto
 
@@ -14,7 +15,7 @@ class Producto:
 
         self.id_producto = id_producto
 
-        self.id_tienda =id_tienda
+        self.id_tienda = id_tienda
 
             
 

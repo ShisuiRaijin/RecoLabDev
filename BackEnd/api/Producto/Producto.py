@@ -26,12 +26,13 @@ class ProductoEndpoint(Resource):
     def post(self, id_tienda):
         args = self.post_parser.parse_args()
 
-        producto = Producto(args['nombre_producto'],
-                            args['descripcion_producto'],
-                            args['imagen_producto'],
-                            args['precio_producto'])
+        producto = Producto(nombre_producto=args['nombre_producto'],
+                            descripcion_producto=args['descripcion_producto'],
+                            imagen_producto=args['imagen_producto'],
+                            precio_producto=args['precio_producto'],
+                            id_tienda=id_tienda)
 
-        self.db.agregar_producto(producto, id_tienda)
+        self.db.agregar_producto(producto)
         return producto, 200
 
     def delete(self, id_tienda, id_producto):

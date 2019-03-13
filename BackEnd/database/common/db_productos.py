@@ -5,7 +5,7 @@ from ...resources.Producto.Producto import Producto
 class Db_productos(Basedatos):
     """Permite interactuar con la tabla productos."""
     
-    def agregar_producto(self, producto, tienda):
+    def agregar_producto(self, producto):
         """Recibe objeto Producto a guardar y  objeto Tienda al que esta relacionado.
         
         Asigna automaticamente un id unico a cada producto y lo relaciona con el id su tienda,
@@ -18,7 +18,7 @@ class Db_productos(Basedatos):
                               producto.descripcion_producto,
                               producto.imagen_producto,
                               producto.precio_producto,
-                              tienda.id_tienda]
+                              producto.id_tienda]
             try:
                 self.conectar_base_datos()
                 self.cursor.execute('''INSERT INTO productos(
