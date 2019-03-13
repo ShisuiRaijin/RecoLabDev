@@ -4,9 +4,9 @@ from BackEnd.resources.Producto.Producto import Producto
 
 class ProductoEndpoint(Resource):
 
-    def __init__(self, database, post_parser):
-        self.db = database
-        self.post_parser = post_parser
+    def __init__(self, **kwargs):
+        self.db = kwargs['database']
+        self.post_parser = kwargs['reqparser']
         self.load_arguments()
 
     producto_fields = {
