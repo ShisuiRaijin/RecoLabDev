@@ -5,17 +5,20 @@ from ...resources.Producto.Producto import Producto
 class Db_productos(Basedatos):
     """Permite interactuar con la tabla productos."""
     
-    def agregar_producto(self,producto,tienda):
+    def agregar_producto(self, producto, tienda):
         """Recibe objeto Producto a guardar y  objeto Tienda al que esta relacionado.
         
         Asigna automaticamente un id unico a cada producto y lo relaciona con el id su tienda,
         No se insertaran productos cuando exista otro registro con el cual coincida exactamente
         la combinacion de los datos de 'nombre', 'descripcion','ruta_imagen'
         e 'id_tienda_madre' """
-        if isinstance(producto,Producto):
+        if isinstance(producto, Producto):
 
-            datos_producto = [producto.nombre_producto, producto.descripcion_producto, 
-                        producto.imagen_producto, producto.precio_producto, tienda.id_tienda]
+            datos_producto = [producto.nombre_producto,
+                              producto.descripcion_producto,
+                              producto.imagen_producto,
+                              producto.precio_producto,
+                              tienda.id_tienda]
             try:
                 self.conectar_base_datos()
                 self.cursor.execute('''INSERT INTO productos(
@@ -25,7 +28,7 @@ class Db_productos(Basedatos):
                 self.commit()
                 self.cerrar_conexion()
                 
-            except sqlite3.IntegrityError :
+            except sqlite3.IntegrityError:
                 return False
 
     def modificar_datos_producto(self, id_producto, nombre_columna, datos_nuevos):
@@ -44,7 +47,7 @@ class Db_productos(Basedatos):
             return False
     
     def no_hay_coincidencias_producto(self):
-        return(Producto('nulo','nulo','nulo','nulo'))
+        return(Producto('nulo', 'nulo', 'nulo', 'nulo'))
 
     def devolver_lista_productos(self,producto):
         """ Se utiliza internamente, toma una lista con los resultados de una 
@@ -71,8 +74,8 @@ class Db_productos(Basedatos):
         
         productos = self.cursor.fetchall()
         self.cerrar_conexion()
-        if len(productos)==0:
-            return [self.no_hay_coincidencias_producto()]
+        if len(productos) == 0:
+            return 404
         else:
             return self.devolver_lista_productos(productos)
 
@@ -101,19 +104,19 @@ class Db_productos(Basedatos):
             
         productos = self.cursor.fetchall()
         self.cerrar_conexion()
-        if len(productos)==0:
+        if len(productos) == 0:
             return [self.no_hay_coincidencias_producto()]
         else:
             return self.devolver_lista_productos(productos)
     
-    def borrar_producto(self,id_producto,id_tienda):
+    def borrar_producto(self, id_producto, id_tienda):
 
         """Recibe id_producto e id_tienda y borra el producto"""
         try:
             self.conectar_base_datos()
-            self.cursor.execute("DELETE FROM productos WHERE id_producto = ? AND id_tienda_madre = ?;",[id_producto,id_tienda])
+            self.cursor.execute("DELETE FROM productos WHERE id_producto = ? AND id_tienda_madre = ?;", [id_producto, id_tienda])
             self.commit()
-        except sqlite3.OperationalError :
+        except sqlite3.OperationalError:
             return False
  
 
