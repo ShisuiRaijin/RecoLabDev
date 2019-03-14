@@ -56,3 +56,17 @@ color: black;
 .verde_clarito{
     background-color: rgba(216, 240, 207);
 }
+
+li{
+    list-style: none;
+}
+
+#contenedor_tienda_x img{
+    max-width: 340px;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: 20px;
+}
+
+
+

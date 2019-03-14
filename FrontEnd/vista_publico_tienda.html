@@ -8,7 +8,8 @@
     <title>Tu tienda</title>
     <link rel="stylesheet" href="static/css/estilos.css">
     <!-- Agrego bootstrap -->
-    <link rel="stylesheet" href="static/css/bootstrap.css"> 
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="static/css/estilos.css"> 
 </head>
 <body>
 
@@ -31,17 +32,13 @@
             </div>
         </div>
     </div>
-     
-
-    <!-- Esta es la cabecera con el logo de la página -->
-    <header> 
+    
+    <header > <!-- Saqué class="container"-->
         <div class="container col-lg-2 col-md-3 col-sm-3 col-xs-3">
             <img class= "img-fluid" src="static/img/tienda1.png" alt="Logo de Tu Tienda">
-        </div> 
+        </div>
     </header>
-    
 
-    <!-- A partir de aqui, el cuerpo de la página desde la barra de navegación -->
     <main class="pb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <a class="navbar-brand" href={{url_for('tutienda')}}>
@@ -51,7 +48,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-             
+                
             <!-- Barra de navegación -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -155,68 +152,33 @@
             </div>
         </nav> 
 
-
-    <!-- ************* Empieza el formulario para crear tienda ***************** -->
-    <div class="container col-xl-5 col-lg-7 col-md-7 col-sm-11 col-xs-12 mt-5 pb-5 pt-5 pl-5 pr-5 rounded" id="formulario_container" >
-   
-        <form action="" method="post">
-            <!-- Nombre de la tienda -->
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="nombre">Nombre de la tienda</label>
-                    <input type="text" class="form-control" id="nombre" name='nombre_tienda' placeholder="Nombre de la tienda" required>
+        <!-- Cuerpo de la pagina -->
+        <div>
+            <!-- Info de la tienda X -->
+            <div class="card mb-3 ml-4 mr-4 mt-5"  id="contenedor_tienda_x">
+              	<div class="row no-gutters">
+	                <div class="col-md-5">
+	                  <img id="carga_img" class="card-img">
+	                </div>
+                <div class="col-md-7">
+                  	<div class="card-body">
+	                    <h5 class="card-title" id="nomb_tienda"><!-- Se carga dinámicamente el nombre de la tienda --></h5>
+	                    <p class="card-text">
+	                        <ul id="lista_datos">
+	                            <li id="carga_direccion"></li>
+	                            <li id="carga_categoria"></li>
+	                            <li id="carga_celular"></li>
+	                            <li id="carga_correo"></li>
+	                        </ul>
+	                    </p>
+                  	</div>
                 </div>
-                <div class="form-group">
-                    <label for="inputContrasenia">Contraseña</label>
-                    <input type="password" class="form-control" id="inputContrasenia" name='contrasena_tienda' placeholder="Ingrese una contraseña" required>
-                </div>
-            </div>
 
-            <!-- Dirección de la tienda -->
-            <div class="form-group">
-                <label for="inputAddress">Dirección</label>
-                <input type="text" class="form-control" id="inputAddress" name='direccion_tienda' placeholder="Dirección" required>
-            </div>
+            <!-- Productos de la tienda X - Se cargan dinamicamente-->
 
-            <!-- Correo electrónico -->
-            <div class="form-group">
-                <label for="inputemail">Correo electrónico</label>
-                <input type="email" class="form-control" id="inputemail" name='correo_tienda' placeholder="Correo electónico" required>
-            </div>
-
-            <!-- Celular -->
-            <div class="form-group">
-                <label for="inputtelefono">Celular</label>
-                <input type="tel" pattern="[0-9]{9}" class="form-control" id="inputtelefono" name='celular_tienda' placeholder="Celular" required>
-            </div>
-
-            <!-- Categoría -->
-            <div class="form-group">
-                <label for="inputcategoria">Categoría </label>
-                <select id="inputcategoria" name='categoria_tienda' class="form-control">
-                    <option value="Tienda de artículos varios" selected>Tienda de artículos varios</option>
-                    <option value="Alimentos y bibidas">Alimentos y bibidas</option>
-                    <option value="Educación">Educación</option>
-                    <option value="Entretenimiento">Entretenimiento</option>
-                    <option value="Salud">Salud</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Vestimenta">Vestimenta</option>
-                </select>
-            </div>
-          
-            <!-- Cargar imagen de portada o logo -->
-            <div class="form-group">
-                <label for="cargaimg">Imágen de portada</label>
-                <input type="text" class="form-control-file" id="cargaimg" name='ruta_imagen_tienda' required>
-            </div>
-
-            <button type="submit" class="btn btn-primary" id="btn_crear" name='enviar_formulario'>
-            Crear
-            </button>
-
-        </form>
-    </div>
-</main>
+            <!-- Final cuerpo de pagina -->
+        </div>
+    </main>
 
     <!-- Pie de página -->
     <footer>
@@ -231,6 +193,7 @@
                     </h6>
                 </div>
             </div>
+
             <div class="row"> 
                 <div class="col-md-12 text-center">
                     <p class="text-muted small">
@@ -241,8 +204,9 @@
                     camilachoca44@gmail.com<br>.</p>
                 </div>
             </div>
-        </div>
+        </div> 
     </footer>
+
 
     <!-- Agrego archivos js -->
     <script src="static/js/bootstrap.js"></script>
@@ -251,5 +215,7 @@
     <script src="static/js/bootstrap.bundle.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/comportamiento.js"></script>
+    <script type="text/javascript" src="static/js/vista_publico_tienda.js"></script>
+
 </body>
 </html>

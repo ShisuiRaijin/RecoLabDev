@@ -55,22 +55,26 @@ class Db_productos(Basedatos):
 
         lista_productos = []
         for registro in producto:
-                objeto=Producto(registro[1],registro[2],registro[3],
-                            registro[4],registro[0],registro[5])
+                objeto = Producto(nombre_producto=registro[1],
+                                  descripcion_producto=registro[2],
+                                  imagen_producto=registro[3],
+                                  precio_producto=registro[4],
+                                  id_producto=registro[0],
+                                  id_tienda=registro[5])
                 lista_productos.append(objeto)
         return(lista_productos)
 
-    def extraer_productos_tienda(self,id_tienda=''): 
+    def extraer_productos_tienda(self, id_tienda=''):
         """Recibe un id de Tienda, retorna lista de todos los objetos Producto relacionados 
         a ella. Si no se le especifica el parametro devuelve 20 productos al azar"""
 
-        if type(id_tienda)==int:
-            id_tienda='WHERE id_tienda_madre ={} '.format(id_tienda)
+        if type(id_tienda) == int:
+            id_tienda = 'WHERE id_tienda_madre ={} '.format(id_tienda)
         else:
-            id_tienda='ORDER BY random() LIMIT 20'
+            return 404
         
         self.conectar_base_datos()
-        self.cursor.execute( " SELECT * FROM productos {};".format(id_tienda))
+        self.cursor.execute("SELECT * FROM productos {};".format(id_tienda))
         
         productos = self.cursor.fetchall()
         self.cerrar_conexion()
@@ -118,5 +122,3 @@ class Db_productos(Basedatos):
             self.commit()
         except sqlite3.OperationalError:
             return False
- 
-

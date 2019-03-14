@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href=img/logo_tienda.png>
+    <link rel="shortcut icon" href=static/img/logo_tienda.png>
     <title>Tu tienda</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="static/css/estilos.css">
     <!-- Agrego bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.css"> 
+    <link rel="stylesheet" href="static/css/bootstrap.css"> 
 </head>
 <body>
     <header >
         <div class="container col-lg-2 col-md-3 col-sm-3 col-xs-3">
-            <img class= "img-fluid" src="img/tienda1.png" alt="Logo de Tu Tienda">
+            <img class= "img-fluid" src="static/img/tienda1.png" alt="Logo de Tu Tienda">
         </div>
     </header>
 
     <main class="pb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <a class="navbar-brand" href="index.html">
-                <img src="img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
+                <img src="static/img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
                 Tu tienda en línea
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                     <li class="nav-item active">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario.html">Crear tienda</a> 
+                        <a class="nav-link" href={{url_for('formulario')}}>Crear tienda</a> 
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#">Ofertas</a> 
@@ -123,9 +123,9 @@
                 </ul>
 
                 <!-- Barra de búsqueda -->
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Busca una tienda" aria-label="Search">
-                        <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                <form class="form-inline my-2 my-lg-0" action='buscar' method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Busca una tienda" name ='buscar' aria-label="Search">
+                    <button id="search-button"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
         </nav> 
@@ -137,48 +137,125 @@
             <div class="row no-gutters">
 
                 <!-- Imagen -->
-                <div class="col-md-4 text-center">
-                    <img src="img/fachada_tienda.jpg" class="card-img" alt="...">
+                <div class="col-md-4 text-center verde_clarito pt-4 pl-4 pr-4 pb-2" id="div_imagen_tienda">
+                    <img src="static/img/fachada_tienda.jpg" class="card-img" alt="Fachada de la tienda" title="">
                 </div>
 
                 <!--Cuerpo del perfil-->
-                <div class="col-md-8 ">
+                <div class="col-md-8 pb-4" id="div_nombre">
                     <div class="card-body verde_clarito">
                         <h4 class="card-title ">Perfil <i>Mi Tienda</i><br></h4>
                     </div>    
                     <div class="dropdown-divider"></div>
-                    <h5 class="card-title">Este es el nombre de la tienda</h5>
+                    <h4 class="card-title"></h4>  <!-- Se carga dinamicamente el nombre de la tienda-->
+
 
                     <!-- Botones de edicion y descripcion -->
-                    <button type="button" class="btn btn-outline-success">Editar nombre</button>
-                    <p class="card-text"><small class="text-muted">Esta es una breve descripción de la tienda. Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit. Phasellus sodales gravida risus, eget fringilla ligula faucibus scelerisque. 
-                    Aliquam fermentum vulputate mattis. Maecenas feugiat rutrum eros ut vehicula. Vestibulum nec dictum nunc. 
-                    Ut volutpat porttitor sapien at elementum. </small></p>
+                    <button type="button" class="btn btn-outline-success" id="editar_nombre">Editar nombre</button>
+
+                    <p class="card-text"><small class="text-muted">Somos una tienda local. Puedes ver nuestra información a continuación </small></p>
                     <button type="button" class="btn btn-outline-success mr-3">Editar descripción</button><button type="button" class="btn btn-outline-success">Cambiar imagen</button>
+                    <div class="dropdown-divider"></div>
+
+
+                    <!--PARA VISUALIZAR - Se cargaria dinamicamente si se desea editar
+                    <form method="post" class="pt-3 pb-3">
+                        <label for="nombre_nueva" class="mr-5">Ingrese nuevo nombre</label>
+                        <input type="text" id="nombre_nueva" name="nombre_nueva">
+                        <button type="submit" class="btn btn-secondary btn-sm">Listo</button>
+                    </form>
+                    -->
+
+
                 </div>
             </div>
         </div>
   
         <!-- Opciones de editado -->
         <div class="card text-center ml-5 mr-5 ">
-            <div class=" verdecito">Información</div>
+            <div class=" verdecito">
+                <h4>Información</h4>
+            </div>
 
             <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="">Nombre</a> <p> <!-- Aca va la categoria--> Phasellus sodales gravida risus<button type="button" class="float-right btn btn-outline-success ml-3">Editar</button></p></li>
-            <li class="list-group-item"><a href="">Categoría</a>  <p> <!-- Aca va la dirección-->Vestibulum nec dictum nunc <button type="button" class="float-right btn btn-outline-success ml-3">Editar</button></p></li>
-            <li class="list-group-item"><a href="">Celular</a> <p> <!-- Aca va el celular-->Ut volutpat porttitor sapien at elementum<button type="button" class="float-right btn btn-outline-success ml-3">Editar</button></p></li>
-            <li class="list-group-item"><a href=""> Correo electrónico</a><p><!-- Aca va el correo electrónico -->Maecenas feugiat rutrum eros ut vehicula<button type="button" class="float-right btn btn-outline-success ml-3">Editar</button></p></li>
+
+                <li class="list-group-item" id="li_direccion">
+                    <h5>Dirección</h5> 
+                    <p><p id="dir_tienda"> <!-- Aca va la direccion--></p>
+                    <button type="button" class="float-right btn btn-outline-success ml-3" id="editar_dir">Editar</button></p>
+                    
+                    <!--PARA VISUALIZAR - Se cargaria dinamicamente si se desea editar
+                        <form method="post">
+                            <label for="direccion_nueva" class="mr-5">Ingrese nueva dirección</label>
+                            <input type="text" id="direccion_nueva" name="direccion_nueva">
+                            <button type="submit" class="btn btn-secondary btn-sm">Listo</button>
+                        </form>
+                    -->
+                </li>
+                
+                <li class="list-group-item" id="li_categoria">
+                    <h5>Categoría</h5>  
+                    <p><p id="cat_tienda"> <!-- Aca va la categoria--> </p>
+                    <button type="button" class="float-right btn btn-outline-success ml-3" id="editar_cat">Editar</button></p>
+                    
+                    <!--PARA VISUALIZAR - Se cargaria dinamicamente si se desea editar
+                        <form method="post">
+                            <label for="categoria_nueva" class="mr-5">Ingrese nueva categoría</label>
+                            <input type="text" id="categoria_nueva" name="categoria_nueva">
+                            <button type="submit" class="btn btn-secondary btn-sm">Listo</button>
+                        </form>
+                    -->
+                </li>
+                
+                <li class="list-group-item" id="li_contacto">
+                    <h5>Contacto</h5> 
+                    <p><p id="celu_tienda"> <!-- Aca va el celular--> </p>
+                    <button type="button" class="float-right btn btn-outline-success ml-3" id="editar_contacto">Editar</button></p>
+                    
+                    <!--PARA VISUALIZAR - Se cargaria dinamicamente si se desea editar
+                        <form method="post">
+                            <label for="contacto_nueva" class="mr-5">Ingrese nuevo contacto</label>
+                            <input type="text" id="contacto_nueva" name="contacto_nueva">
+                            <button type="submit" class="btn btn-secondary btn-sm">Listo</button>
+                        </form>
+                    -->
+                </li>
+                
+                <li class="list-group-item" id="li_correo">
+                    <h5> Correo electrónico</h5>
+                    <p><p id="correo_tienda"><!-- Aca va el correo electrónico --></p>
+                    <button type="button" class="float-right btn btn-outline-success ml-3" id="editar_correo">Editar</button></p>
+
+                    <!--PARA VISUALIZAR - Se cargaria dinamicamente si se desea editar
+                        <form method="post">
+                            <label for="correo_nueva" class="mr-5">Ingrese nuevo correo electrónico</label>
+                            <input type="text" id="correo_nueva" name="correo_nueva">
+                            <button type="submit" class="btn btn-secondary btn-sm">Listo</button>
+
+                        </form>
+                    -->
+          
+                </li>
+                
             </ul>
+
         </div>
         <div class="card text-center ml-5 mr-5 mt-3">
-            <div class="verdecito">Productos</div>
+            <div class="verdecito">
+                <h5>Productos</h5>           
+            </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href=""> <p>Cargar nuevo producto</a></p></li>
-                <li class="list-group-item"><a href=""><p>Mis productos</a></p></li>
+                <li class="list-group-item"><p>
+                    <a href="carga_producto.html"><button type="button" class="btn btn-secondary btn-sm" id="carga_de_productos">Cargar nuevo producto</button> </a>
+                </p></li>
+                <li class="list-group-item"><p>
+                    <button type="button" class="btn btn-secondary btn-sm">Ver mis productos</button>
+                </p></li>
             </ul>
         </div>
     </main>
+
+
 
     <!-- Pie de página -->
     <footer>
@@ -209,11 +286,14 @@
 
 
     <!-- Agrego archivos js -->
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.bundle.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/vista_usuario_tienda.js"></script>
+    <script type="text/javascript" src="static/js/opc_editado_vista_usuario_tienda.js"></script>
+    <script type="text/javascript" src="static/js/carga_producto.js"></script>
 
 </body>
 </html>

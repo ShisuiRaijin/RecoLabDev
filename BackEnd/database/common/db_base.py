@@ -9,11 +9,11 @@ class Basedatos:
 
     def conectar_base_datos(self):
         
-        self.db = sqlite3.connect("base_datos.db")
+        self.db = sqlite3.connect("BackEnd/database/data_base.db")
         self.cursor = self.db.cursor()
 
     def commit(self):
-        
+
         self.db.commit()
 
     def cerrar_conexion(self):
