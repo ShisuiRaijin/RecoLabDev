@@ -4,23 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href=static/img/logo_tienda.png>
+    <link rel="shortcut icon" href='img/logo_tienda.png'>
     <title>Tu tienda</title>
-    <link rel="stylesheet" href="static/css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <!-- Agrego bootstrap -->
-    <link rel="stylesheet" href="static/css/bootstrap.css"> 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 <body>
-    <header >
+
+    <!-- Este es el cartel que aparece cuando se validan los datos del formulario de creación de tienda -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bienvenido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                Su cuenta se ha creado con éxito!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <header > <!-- Saqué class="container"-->
         <div class="container col-lg-2 col-md-3 col-sm-3 col-xs-3">
-            <img class= "img-fluid" src="static/img/tienda1.png" alt="Logo de Tu Tienda">
+            <img class= "img-fluid" src="img/tienda1.png" alt="Logo de Tu Tienda">
         </div>
     </header>
 
     <main class="pb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="index.html">
-                <img src="static/img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
+            <a class="navbar-brand" href={{url_for('tutienda')}}>
+                <img src="img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
                 Tu tienda en línea
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +55,7 @@
                     <li class="nav-item active">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formulario.html">Crear tienda</a> 
+                        <a class="nav-link" href={{url_for('formulario')}}>Crear tienda</a> 
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#">Ofertas</a> 
@@ -115,7 +137,7 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- Opciones de ingreso -->
-                            <a class="dropdown-item" href="formulario.html">¿Eres nuevo?, regístrate</a>
+                            <a class="dropdown-item" href={{url_for('formulario')}}>¿Eres nuevo?, regístrate</a>
                             <a class="dropdown-item" href="#">¿Olvidaste la contraseña?</a>
 
                         </div>
@@ -125,49 +147,38 @@
                 <!-- Barra de búsqueda -->
                 <form class="form-inline my-2 my-lg-0" action='buscar' method="POST">
                     <input class="form-control mr-sm-2" type="search" placeholder="Busca una tienda" name ='buscar' aria-label="Search">
-                    <button id="search-button"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        <button id="search-button"  class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
         </nav> 
 
-
-        <!-- Formulario de carga de productos -->
-        <div class="container col-xl-5 col-lg-7 col-md-7 col-sm-11 col-xs-12 mt-5 pb-5 pt-5 pl-5 pr-5 rounded" id="formulario_container" >
-   
-            <form action="" method="post">
-
-                <!-- Nombre del producto -->
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="nombre_producto">Ingrese nombre del producto</label>
-                        <input type="text" class="form-control" id="nombre_producto" name='nombre_producto' required>
-                    </div>
+        <!-- Cuerpo de la pagina -->
+        <div>
+            <!-- Info de la tienda X -->
+            <div class="card mb-3 ml-4 mr-4 mt-5"  id="contenedor_tienda_x">
+              	<div class="row no-gutters">
+	                <div class="col-md-5">
+	                  <img id="carga_img" class="card-img">
+	                </div>
+                <div class="col-md-7">
+                  	<div class="card-body">
+	                    <h5 class="card-title" id="nomb_tienda"><!-- Se carga dinámicamente el nombre de la tienda --></h5>
+	                    <p class="card-text">
+	                        <ul id="lista_datos">
+	                            <li id="carga_direccion"></li>
+	                            <li id="carga_categoria"></li>
+	                            <li id="carga_celular"></li>
+	                            <li id="carga_correo"></li>
+	                        </ul>
+	                    </p>
+                  	</div>
                 </div>
 
-                <!-- Precio del producto -->
-                <div class="form-group">
-                    <label for="Precio_producto">Ingrese precio del producto</label>
-                    <input type="text" class="form-control" id="Precio_producto" name='Precio_producto' required>
-                </div>
-              
-                <!-- Cargar imagen de portada o logo -->
-                <div class="form-group">
-                    <label for="cargaimg">Imágen del producto</label>
-                    <input type="text" class="form-control-file" id="cargaimg" name='ruta_imagen_tienda' required>
-                </div>
+            <!-- Productos de la tienda X - Se cargan dinamicamente-->
 
-                <button type="submit" class="btn btn-primary" id="btn_cargar" name='cargar_productos'>
-                Crear
-                </button>
-
-                <button type="button" class="btn btn-primary" id="btn_cancelar">
-                Cancelar
-                </button>
-
-            </form>
+            <!-- Final cuerpo de pagina -->
         </div>
     </main>
-
 
     <!-- Pie de página -->
     <footer>
@@ -198,14 +209,13 @@
 
 
     <!-- Agrego archivos js -->
-    <script src="static/js/bootstrap.js"></script>
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="static/js/bootstrap.bundle.js"></script>
-    <script src="static/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/js/vista_tienda.js"></script>
-    <script type="text/javascript" src="static/js/opc_editado_vista_usuario_tienda.js"></script>
-    <script type="text/javascript" src="static/js/carga_producto.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/comportamiento.js"></script>
+    <script type="text/javascript" src="js/vista_publico_tienda.js"></script>
 
 </body>
 </html>

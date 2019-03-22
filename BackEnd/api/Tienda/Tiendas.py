@@ -3,6 +3,7 @@ from flask import jsonify
 from BackEnd.resources.Tienda.Tienda import Tienda
 from flask_restful import reqparse
 
+
 class TiendasEndpoint(Resource):
 
     def __init__(self, **kwargs):

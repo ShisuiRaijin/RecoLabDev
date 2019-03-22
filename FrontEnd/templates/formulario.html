@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href='static/img/logo_tienda.png'>
+    <link rel="shortcut icon" href='/static/img/logo_tienda.png'>
     <title>Tu tienda</title>
-    <link rel="stylesheet" href="static/css/estilos.css">
+    <link rel="stylesheet" href="/static/css/estilos.css">
     <!-- Agrego bootstrap -->
-    <link rel="stylesheet" href="static/css/bootstrap.css"> 
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
     <!-- Esta es la cabecera con el logo de la página -->
     <header> 
         <div class="container col-lg-2 col-md-3 col-sm-3 col-xs-3">
-            <img class= "img-fluid" src="static/img/tienda1.png" alt="Logo de Tu Tienda">
+            <img class= "img-fluid" src="/static/img/tienda1.png" alt="Logo de Tu Tienda">
         </div> 
     </header>
     
@@ -44,8 +44,8 @@
     <!-- A partir de aqui, el cuerpo de la página desde la barra de navegación -->
     <main class="pb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href={{url_for('tutienda')}}>
-                <img src="static/img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/static/img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
                 Tu tienda en línea
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
                     <li class="nav-item active">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href={{url_for('formulario')}}>Crear tienda</a> 
+                        <a class="nav-link" href="#">Crear tienda</a> 
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#">Ofertas</a> 
@@ -140,7 +140,7 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- Opciones de ingreso -->
-                            <a class="dropdown-item" href={{url_for('formulario')}}>¿Eres nuevo?, regístrate</a>
+                            <a class="dropdown-item" href="#">¿Eres nuevo?, regístrate</a>
                             <a class="dropdown-item" href="#">¿Olvidaste la contraseña?</a>
 
                         </div>
@@ -245,11 +245,11 @@
     </footer>
 
     <!-- Agrego archivos js -->
-    <script src="static/js/bootstrap.js"></script>
-    <script src="static/js/jquery-3.3.1.min.js"></script>
-    <script src="static/js/bootstrap.bundle.js"></script>
-    <script src="static/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/comportamiento.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/comportamiento.js"></script>
 </body>
 </html>
