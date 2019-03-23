@@ -3,7 +3,7 @@ from flask_restful import Api
 from BackEnd.router.Router import Router
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 api = Api(app)
 router = Router(api)
 

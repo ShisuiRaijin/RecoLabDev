@@ -1,8 +1,7 @@
 from flask_restful import fields, marshal_with, Resource, output_json
-from flask import jsonify
+from flask import redirect
 from BackEnd.resources.Tienda.Tienda import Tienda
 from flask_restful import reqparse
-
 
 class TiendasEndpoint(Resource):
 
@@ -35,7 +34,9 @@ class TiendasEndpoint(Resource):
                         args['contacto'])
 
         self.db.agregar_tienda(tienda)
-        return tienda, 200
+        tiendas = self.db.extraer_todas_tiendas()
+        lastTienda = tiendas[-1]
+        return lastTienda
 
     def load_arguments(self):
         self.post_parser.add_argument(

@@ -1,0 +1,30 @@
+hay que la request a la api en javascript, para que no redirija al objecto de la api y ya muestre la tienda creada,
+
+hay que cambiar un poco el javascript para que apunte a la api en vez de las pruebas que hizo camila,
+
+
+Ejemplo de como seria el proceso:
+	le das a crear tienda, 
+	se llenas el formulario,
+	le das crear y te sale un mensaje en lo posible de que fue exitoso,
+	la pagina te redirige a la nueva tienda creada.
+
+-para hacer esto cuando se envia el formulario hay que sacar el id de la tienda de la respuesta de la api cuando se crea, 
+
+-luego con eso redirigimos al usuario a la pagina  de la tienda, seria a:
+"localhost/tiendas/<id de la tienda que sacamos de la respuesta>"
+
+cuando vallamos a esa url, flask (la parte de la pagina) va mostrar la template de la vista de una tienda,
+le va a agregar las urls y al final de la pagina va a agreagarle el id de la tienda que saca de la url,
+esto es para que cuando cargue la pagina con javascript sacamos el id de la tienda de ese elemento,
+y le pedimos la informacion a la api de esa tienda especifica,
+luego con javascript se carga esa informacion en la vista,
+y listo veriamos la tienda
+
+
+Notas de como correr todo, 
+
+Para ejecutar la api corremos el archivo api.py en la carpeta back end(La api escucha en el puerto 5000)
+
+para ejecutar la parte de la web corremos app.py en front end (la app corre en el puerto 80) 
+para acceder a index entramos en http://localhost/index.html

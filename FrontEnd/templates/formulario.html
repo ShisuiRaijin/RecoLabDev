@@ -40,11 +40,10 @@
         </div> 
     </header>
     
-
     <!-- A partir de aqui, el cuerpo de la página desde la barra de navegación -->
     <main class="pb-5">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-            <a class="navbar-brand" href="/index.html">
+            <a class="navbar-brand" href={{ url_for('index') }}>
                 <img src="/static/img/sale.png" width="30" height="30" class="d-inline-block align-top" alt="image for sale">
                 Tu tienda en línea
             </a>
@@ -58,7 +57,7 @@
                     <li class="nav-item active">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Crear tienda</a> 
+                        <a class="nav-link" href="{{ url_for('registro') }}">Crear tienda</a> 
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#">Ofertas</a> 
@@ -159,17 +158,11 @@
     <!-- ************* Empieza el formulario para crear tienda ***************** -->
     <div class="container col-xl-5 col-lg-7 col-md-7 col-sm-11 col-xs-12 mt-5 pb-5 pt-5 pl-5 pr-5 rounded" id="formulario_container" >
    
-        <form action="" method="post">
+        <form action="http://localhost/api/tiendas", method="POST">
             <!-- Nombre de la tienda -->
             <div class="form-group">
-                <div class="form-group">
-                    <label for="nombre">Nombre de la tienda</label>
-                    <input type="text" class="form-control" id="nombre" name='nombre_tienda' placeholder="Nombre de la tienda" required>
-                </div>
-                <div class="form-group">
-                    <label for="inputContrasenia">Contraseña</label>
-                    <input type="password" class="form-control" id="inputContrasenia" name='contrasena_tienda' placeholder="Ingrese una contraseña" required>
-                </div>
+                <label for="nombre">Nombre de la tienda</label>
+                <input type="text" class="form-control" id="nombre" name='nombre_tienda' placeholder="Nombre de la tienda" required>
             </div>
 
             <!-- Dirección de la tienda -->
@@ -178,22 +171,16 @@
                 <input type="text" class="form-control" id="inputAddress" name='direccion_tienda' placeholder="Dirección" required>
             </div>
 
-            <!-- Correo electrónico -->
-            <div class="form-group">
-                <label for="inputemail">Correo electrónico</label>
-                <input type="email" class="form-control" id="inputemail" name='correo_tienda' placeholder="Correo electónico" required>
-            </div>
-
             <!-- Celular -->
             <div class="form-group">
                 <label for="inputtelefono">Celular</label>
-                <input type="tel" pattern="[0-9]{9}" class="form-control" id="inputtelefono" name='celular_tienda' placeholder="Celular" required>
+                <input type="tel" pattern="[0-9]{9}" class="form-control" id="inputtelefono" name='contacto' placeholder="Celular" required>
             </div>
 
             <!-- Categoría -->
             <div class="form-group">
                 <label for="inputcategoria">Categoría </label>
-                <select id="inputcategoria" name='categoria_tienda' class="form-control">
+                <select id="inputcategoria" name='categoria' class="form-control">
                     <option value="Tienda de artículos varios" selected>Tienda de artículos varios</option>
                     <option value="Alimentos y bibidas">Alimentos y bibidas</option>
                     <option value="Educación">Educación</option>
@@ -207,11 +194,15 @@
             <!-- Cargar imagen de portada o logo -->
             <div class="form-group">
                 <label for="cargaimg">Imágen de portada</label>
-                <input type="text" class="form-control-file" id="cargaimg" name='ruta_imagen_tienda' required>
+                <input type="text" class="form-control-file" id="cargaimg" name='imagen_portada_tienda' required>
             </div>
 
+            <script>
+            
+            </script>
+
             <button type="submit" class="btn btn-primary" id="btn_crear" name='enviar_formulario'>
-            Crear
+                Crear
             </button>
 
         </form>
@@ -251,5 +242,6 @@
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/comportamiento.js"></script>
+    <script src="/static/js/registro.js"></script>
 </body>
 </html>

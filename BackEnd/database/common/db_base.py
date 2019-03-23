@@ -8,8 +8,8 @@ class Basedatos:
         self.crear_tabla()
 
     def conectar_base_datos(self):
-        
-        self.db = sqlite3.connect("BackEnd/database/data_base.db")
+
+        self.db = sqlite3.connect("database/data_base.db")
         self.cursor = self.db.cursor()
 
     def commit(self):
